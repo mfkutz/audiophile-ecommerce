@@ -1,0 +1,18 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        "more-ec": "#D87D4A",
+        "black-ec": "#141414",
+        "white-ec": "#F1F1F1",
+        "trans-ec": "#FAFAFA",
+      },
+      screens: {
+        mk: "1110px",
+      },
+    },
+  },
+  plugins: [],
+};
