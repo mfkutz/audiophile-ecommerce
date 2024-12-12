@@ -8,6 +8,9 @@ export default {
         "black-ec": "#141414",
         "white-ec": "#F1F1F1",
         "trans-ec": "#FAFAFA",
+        "more-cc": "#FBAF85",
+        "black-cc": "#000000",
+        "white-cc": "#FFFFFF",
       },
       screens: {
         mk: "1110px",
