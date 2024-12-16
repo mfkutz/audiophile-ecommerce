@@ -9,11 +9,11 @@ body {
 }
 
 h1 {
-  @apply font-bold text-[56px] leading-[58px] tracking-[2px] uppercase;
+  @apply font-bold sps:text-[56px] text-[36px] leading-[58px] tracking-[2px] uppercase;
 }
 
 h2 {
-  @apply font-bold text-[40px] leading-[44px] tracking-[1.5px] uppercase;
+  @apply font-bold text-[40px] sps:leading-[44px] leading-3 tracking-[1.5px] uppercase;
 }
 
 h3 {
