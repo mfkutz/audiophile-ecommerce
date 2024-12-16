@@ -15,6 +15,7 @@ export default {
       },
       screens: {
         mk: "1110px",
+        md: "800px",
       },
     },
   },
