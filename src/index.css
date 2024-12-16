@@ -39,3 +39,7 @@ h6 {
 .subtitle {
   @apply font-bold text-[13px] text-more-ec leading-[25px] tracking-[1px] uppercase;
 }
+
+.martin {
+  background-position: bottom;
+}

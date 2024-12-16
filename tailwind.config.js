@@ -18,6 +18,7 @@ export default {
         md: "800px",
         sp: "925px",
         sps: "470px",
+        acc: "560px",
       },
     },
   },
