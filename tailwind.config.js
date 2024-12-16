@@ -11,6 +11,7 @@ export default {
         "more-cc": "#FBAF85",
         "black-cc": "#000000",
         "white-cc": "#FFFFFF",
+        "black-esp": "#121212",
       },
       screens: {
         mk: "1110px",

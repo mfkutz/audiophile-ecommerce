@@ -16,7 +16,7 @@ export default function Hero() {
                 </div>
 
             </div>
-            <div className=" overflow-hidden bg-[url('./Bitmap.svg')]  bg-center flex-1" >
+            <div className=" overflow-hidden bg-[url('./Bitmap.svg')]  bg-bottom flex-1" >
                 {/* <img src="Bitmap.svg" alt="image hero" className="" /> */}
 
             </div>

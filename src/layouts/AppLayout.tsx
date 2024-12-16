@@ -4,7 +4,7 @@ import Header from "../components/Header";
 export default function AppLayout() {
     return (
         <>
-            <section className=" bg-black-ec">
+            <section className=" bg-black-esp">
                 <Header />
             </section>
             <section>
