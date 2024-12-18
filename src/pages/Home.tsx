@@ -1,4 +1,5 @@
 import Accesories from "../components/Accesories";
+import FeatureSection from "../components/Feature.secton";
 import Hero from "../components/Hero";
 
 export default function Home() {
@@ -9,6 +10,9 @@ export default function Home() {
             </section>
             <section className="px-5">
                 <Accesories />
+            </section>
+            <section>
+                <FeatureSection />
             </section>
         </>
     )
