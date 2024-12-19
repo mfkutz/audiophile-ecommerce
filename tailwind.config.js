@@ -13,6 +13,7 @@ export default {
         "white-cc": "#FFFFFF",
         "black-esp": "#121212",
         "gray-btn": "#4C4C4C",
+        "gray-circle": "#D8D8D8",
       },
       screens: {
         mk: "1110px",
