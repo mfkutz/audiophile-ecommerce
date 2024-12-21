@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom"
+import ButtonShop from "../ui/button.shop"
+
 type CardProps = {
     element: string
     image: string
@@ -17,11 +20,10 @@ export default function Card({ element, image, move, isLarge }: CardProps) {
                 className={`absolute top-[-30%] sps:top-[-${move}] ${isLarge ? "w-[100px]" : "w-[88px]"}  sps:w-[122.95px]`}
             />
             <p className="uppercase font-bold text-[15px] sps:text-[18px] mb-[5px] tracking-wider ">{element}</p>
-            <button
-                className=" flex items-center gap-2 uppercase text-[13px] tracking-[1.5px] font-semibold text-gray-700 hover:text-more-ec"
-            >shop
-                <img src="icon-arrow-right.svg" alt="arrow" />
-            </button>
+
+            <Link to="/">
+                <ButtonShop />
+            </Link>
         </div>
     )
 }
