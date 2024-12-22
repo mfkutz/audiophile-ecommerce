@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import Hamburguer from "./Hamburguer";
 
 export default function Header() {
+
     return (
         <header className="max-w-screen-mk flex items-center justify-between mx-auto py-[38px]  xl:px-0 border-b border-b-neutral-700 px-5 sps:px-0">
             <div className="flex items-center lg:max-w-[768px] w-[78%] lg:flex-1 md:justify-between gap-10">

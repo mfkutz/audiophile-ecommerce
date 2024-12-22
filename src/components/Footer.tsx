@@ -14,7 +14,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="flex md:items-center md:justify-between pt-[50px] sps:pt-[55px] md:pt-[70px] flex-col sps:items-start items-center md:flex-row">
+            <div className="flex md:items-center md:justify-between pt-[48px] sps:pt-[55px] md:pt-[70px] flex-col sps:items-start items-center md:flex-row">
                 <Logo />
                 <nav className="text-white  md:flex sps:flex-row uppercase sps:space-x-8 md:mt-0 mt-[50px] sps:mt-[32px]  flex flex-col sps:gap-0 gap-[22px] text-center sps:text-left">
                     <Link to="/" className=" tracking-[2px] font-bold text-[13px] cursor-pointer hover:text-more-ec transition-colors duration-200 ">Home</Link>
@@ -32,17 +32,20 @@ export default function Footer() {
                 </p>
             </div>
 
-            <div className="text-gray-font-footer text-[15px] text-center sps:text-left mt-[58px] pb-[127px] sps:pb-[47px] font-semibold relative">
+            <div className="text-gray-font-footer text-[15px] text-center sps:text-left mt-[51px] pb-[110px] sps:pb-[47px] font-semibold relative">
                 Copyright {new Date().getFullYear()}. All Rights Reserved
-
                 <div className="flex items-end gap-4 pb-[7px] absolute md:top-[-90px] sps:top-[-5px]  sps:right-0 | translate-x-[-50%] sps:translate-x-0 top-[50%] sps:left-auto left-[50%]   ">
-                    <Facebook />
-                    <Twitter />
-                    <Instagram />
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                        <Facebook />
+                    </a>
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                        <Twitter />
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                        <Instagram />
+                    </a>
                 </div>
-
             </div >
-
         </div>
     )
 }
