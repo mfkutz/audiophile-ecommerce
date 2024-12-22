@@ -3,6 +3,7 @@ import Accesories from "../components/Accesories";
 import FeatureSection from "../components/Feature.section";
 import FeatureSectionTwo from "../components/Feature.section.two";
 import Hero from "../components/Hero";
+import NoticeSection from "@/components/Notice.section";
 
 export default function Home() {
     return (
@@ -21,6 +22,9 @@ export default function Home() {
             </section>
             <section className="px-5">
                 <FreatureSectionThree />
+            </section>
+            <section className="px-5">
+                <NoticeSection />
             </section>
         </>
     )
