@@ -16,6 +16,7 @@ export default {
         "gray-btn": "#4C4C4C",
         "gray-circle": "#D8D8D8",
         "gray-font-footer": "#878787",
+        "gray-text-prod": "#717171",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
