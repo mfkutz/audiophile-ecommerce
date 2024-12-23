@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export default function ProductDescriptionTwo() {
     return (
-        <div className="max-w-screen-mk mx-auto flex flex-col md:flex-row justify-between gap-5 mt-[12px] sps:mt-[9px] md:mt-[160px] ">
+        <div className="max-w-screen-mk mx-auto flex flex-col md:flex-row justify-between gap-5 mt-[-8px] sps:mt-[9px] md:mt-[160px] ">
 
             <div className="flex w-full rounded-lg bg-[url('./xx59/image-category-page-preview-tablet.jpg')] md:bg-[url('./xx59/image-category-page-preview-desktop.jpg')] bg-no-repeat bg-cover bg-center h-[350px] md:h-auto">
 
@@ -12,7 +12,7 @@ export default function ProductDescriptionTwo() {
 
             <div className=" rounded-lg flex justify-center text-center md:text-left md:justify-end w-full">
 
-                <div className=" max-w-[562px] md:max-w-[445px] mb-[124px] flex flex-col items-center md:items-start   ">
+                <div className=" max-w-[562px] md:max-w-[445px] mb-[90px] sps:mb-[-25px] md:mb-[124px] flex flex-col items-center md:items-start   ">
                     <p className="font-normal text-[14px] leading-[19px] tracking-[10px] uppercase text-more-ec mt-[10px] sps:mt-[32px] md:mt-[110px]"></p>
                     <h2 className="mt-[27px] sps:mt-[15px] leading-[39px] sps:leading-[45px] max-w-[230px] sps:max-w-[290px] text-[28px] sps:text-[40px]">XX59 Headphones</h2>
                     <p className="mt-[22px] sps:mt-[33px] text-[15px] leading-[24.5px] mb-[23px] sps:mb-[43px] text-gray-text-prod">

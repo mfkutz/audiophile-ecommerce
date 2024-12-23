@@ -24,7 +24,7 @@ export default function Home() {
             <section className="px-5">
                 <FreatureSectionThree />
             </section>
-            <section className="px-5">
+            <section className="px-5 mb-[-90px] md:mb-[200px]">
                 <NoticeSection />
             </section>
             <section className="flex-1 bg-black-esp px-5">
