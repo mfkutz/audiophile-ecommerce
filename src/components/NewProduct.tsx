@@ -24,7 +24,7 @@ export default function NewProduct() {
                         asChild
                         variant="default"
                     >
-                        <Link to="/headphones/mark-two">see product</Link>
+                        <Link to="/mark-two">see product</Link>
                     </Button>
                 </div>
             </div>

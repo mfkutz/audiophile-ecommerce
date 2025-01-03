@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import ButtonShop from "../ui/button.shop"
+import ButtonShop from "../ui/ButtonShop"
 
 type CardProps = {
     element: string
@@ -11,7 +11,7 @@ type CardProps = {
 export default function Card({ element, image, move, isLarge }: CardProps) {
     return (
         <div
-            className="flex flex-col border bg-white-ec rounded-md w-full text-center h-[160px] sps:h-[200px] justify-end py-7 items-center relative"
+            className="flex flex-col  bg-white-ec rounded-lg w-full text-center h-[160px] sps:h-[200px] justify-end py-7 items-center relative max-w-[350px]"
         >
             <div className=" bg-black w-[140px] h-[20px] rounded-full blur-xl absolute top-[35%]"></div>
             <img

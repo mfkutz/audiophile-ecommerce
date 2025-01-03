@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import ButtonShop from "@/components/ui/button.shop";
+import ButtonShop from "@/components/ui/ButtonShop";
 
 export default function Buttons() {
     return (
