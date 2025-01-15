@@ -100,6 +100,10 @@ h6 {
   }
 }
 
+.indexM {
+  z-index: 100;
+}
+
 @layer base {
   * {
     @apply border-border;

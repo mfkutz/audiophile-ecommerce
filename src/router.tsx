@@ -7,6 +7,7 @@ import Speakers from "./pages/Speakers"
 import Earphones from "./pages/Earphones"
 import HeadphoneMarkOne from "./pages/HeadphoneMarkOne"
 import HeadphoneMarkTwo from "./pages/HeadphoneMarkTwo"
+import Checkout from "./pages/Checkout"
 
 export default function Router() {
     return (
@@ -21,6 +22,7 @@ export default function Router() {
 
                     <Route path="/mark-one" element={<HeadphoneMarkOne />} />
                     <Route path="/mark-two" element={<HeadphoneMarkTwo />} />
+                    <Route path="/checkout" element={<Checkout />} />
 
                 </Route>
             </Routes>

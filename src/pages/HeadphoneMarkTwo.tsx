@@ -17,7 +17,7 @@ export default function HeadphoneMarkTwo() {
                 <Features />
             </section>
 
-            <section className="px-5 mt-[105px]">
+            <section className="px-5 mt-[-100px] sps:mt-[-180px] acc:mt-[-190px] md:mt-[100px] sp:mt-[160px] mb-[200px] acc:mb-[240px] md:mb-[-1px]">
                 <Galery />
             </section>
 
