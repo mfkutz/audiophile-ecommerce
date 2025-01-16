@@ -9,12 +9,8 @@ export const authSchema = z.object({
     zipCode: z.string(),
     city: z.string(),
     country: z.string(),
-    eMoneyNumber: z
-        .string()
-        .regex(/^\d+$/, "eMoneyNumber must contain only numbers"), // only num
-    eMoneyPin: z
-        .string()
-        .regex(/^\d{4}$/, "eMoneyPin must be a 4-digit number"), // only 4 digits
+    eMoneyNumber: z.string(),
+    eMoneyPin: z.string()
 })
 
 

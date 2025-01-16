@@ -2,8 +2,11 @@
 import { UserRegistrationForm } from "@/types"
 import { useForm } from "react-hook-form"
 import ErrorMessage from "../errorMessage/ErrorMessage"
+import { useState } from "react"
 
 export default function Form() {
+
+    const [selectedMethod, setSelectedMethod] = useState("")
 
     const initialValues: UserRegistrationForm = {
         name: '',
@@ -23,6 +26,11 @@ export default function Form() {
 
     const handleRegister = (formData) => {
         console.log(formData)
+    }
+
+
+    const handleMethod = (method: string) => {
+        setSelectedMethod(method)
     }
 
     return (
@@ -50,7 +58,7 @@ export default function Form() {
                             id="name"
                             type="name"
                             placeholder="Alexei Ward"
-                            className="w-full px-6 py-[17px] font-semibold text-[14px] border-gray-300 border rounded-lg mt-[6px] w-[309px]"
+                            className=" px-6 py-[17px] font-semibold text-[14px] border-gray-300 border rounded-lg mt-[6px] w-[309px]"
                             {...register("name", {
                                 required: "Name is required",
                             })}
@@ -141,12 +149,9 @@ export default function Form() {
                             })}
                         />
                     </div>
-
-
-
-
-
                 </div>
+
+
 
                 <div className="flex gap-4">
                     <div className="w-full">
@@ -179,7 +184,7 @@ export default function Form() {
                         <div className="flex justify-between mt-8 items-center w-[309px]">
                             <label
                                 className=" font-bold  text-[12px]"
-                                htmlFor="phoneNumber"
+                                htmlFor="city"
                             >City</label>
                             {errors.city && (
                                 <ErrorMessage>{errors.city.message}</ErrorMessage>
@@ -227,6 +232,96 @@ export default function Form() {
 
 
                 <div className="subtitle mt-[41px] mb-3">payments details</div>
+
+                <div className="flex w-full font-bold  text-[12px] justify-between ">
+
+                    <span className="w-full">Payment Method</span>
+
+                    <div>
+
+                        <button
+                            type="button"
+                            onClick={() => handleMethod("eMoney")}
+                            className="relative px-6 py-[17px] font-bold text-[14px] border-gray-300 border rounded-lg mt-[6px] w-[309px] text-left pl-[53px]"
+                        >
+                            <div className={` absolute top-1/2 -translate-y-1/2 left-[20px] w-[12px] h-[12px] ${selectedMethod === "eMoney" ? "bg-more-ec" : ""}  rounded-full`} />
+                            <div className=" absolute top-1/2 -translate-y-1/2 left-[15px] w-[22px] h-[22px] border rounded-full" />
+                            e-Money
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={() => handleMethod("cashOnDelivery")}
+                            className="relative px-6 py-[17px] font-bold text-[14px] border-gray-300 border rounded-lg mt-[6px] w-[309px] text-left pl-[53px]">
+                            <div className={` absolute top-1/2 -translate-y-1/2 left-[20px] w-[12px] h-[12px] ${selectedMethod === "cashOnDelivery" ? "bg-more-ec" : ""}  rounded-full`} />
+                            <div className=" absolute top-1/2 -translate-y-1/2 left-[15px] w-[22px] h-[22px] border rounded-full" />
+                            Cash on Delivery
+                        </button>
+                    </div>
+
+
+                </div>
+
+
+
+
+                {/* /////////////////// */}
+
+                <div className="flex gap-4">
+                    <div className="w-full">
+                        <div className="flex justify-between mt-8 items-center w-[309px]">
+                            <label
+                                className=" font-bold  text-[12px]"
+                                htmlFor="eMoneyNumber"
+                            >e-Money Number</label>
+                            {errors.eMoneyNumber && (
+                                <ErrorMessage>{errors.eMoneyNumber.message}</ErrorMessage>
+                            )}
+                        </div>
+
+                        <input
+                            id="eMoneyNumber"
+                            type="text"
+                            placeholder="238521993"
+                            className="px-6 py-[17px] font-semibold text-[14px] border-gray-300 border rounded-lg mt-[6px] w-[309px]"
+                            {...register("eMoneyNumber", {
+                                required: "e-Money Number is required",
+                                pattern: {
+                                    value: /^\d+$/,
+                                    message: "only numbers",
+                                },
+                            })}
+                        />
+                    </div>
+
+                    <div className="w-full">
+                        <div className="flex justify-between mt-8 items-center w-[309px]">
+                            <label
+                                className=" font-bold  text-[12px]"
+                                htmlFor="eMoneyPin"
+                            >e-Money PIN</label>
+                            {errors.eMoneyPin && (
+                                <ErrorMessage>{errors.eMoneyPin.message}</ErrorMessage>
+                            )}
+                        </div>
+
+                        <input
+                            id="eMoneyPin"
+                            type="text"
+                            placeholder="6891"
+                            maxLength={4}
+                            className="px-6 py-[17px] font-semibold text-[14px] border-gray-300 border rounded-lg mt-[6px] w-[309px]"
+                            {...register("eMoneyPin", {
+                                required: "e-Money Pin is required",
+                                pattern: {
+                                    value: /^\d{4}$/,
+                                    message: "eMoneyPin must be a 4-digit number"
+                                }
+                            })}
+                        />
+                    </div>
+
+                </div>
 
 
                 <input
