@@ -9,6 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        pay: "bg-more-ec w-full p-3 text-white font-semibold cursor-pointer text-[13px] mt-4 uppercase tracking-[1.9px]",
         default:
           "bg-more-ec hover:bg-more-cc  uppercase text-white text-[12px] font-semibold tracking-[1.3px]",
         primary:
