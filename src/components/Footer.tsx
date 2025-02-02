@@ -6,7 +6,7 @@ import Instagram from "./socialIcons/Instagram";
 
 export default function Footer() {
     return (
-        <div className="max-w-screen-mk mx-auto flex flex-col">
+        <div className="max-w-screen-mk mx-auto flex flex-col martin">
 
             <div className=" h-1 flex w-full justify-center sps:justify-start">
                 <div className="bg-more-ec h-1 max-w-[101px] w-full">
