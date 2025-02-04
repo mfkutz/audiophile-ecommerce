@@ -4,10 +4,14 @@ import { useForm } from "react-hook-form"
 import ErrorMessage from "../errorMessage/ErrorMessage"
 import { useState } from "react"
 import { Button } from "../ui/button"
+import Order from "../order/Order"
 
 export default function Form() {
 
     const [selectedMethod, setSelectedMethod] = useState("eMoney")
+
+    const [orderView, setOrderView] = useState(false)
+
 
     const initialValues: UserRegistrationForm = {
         name: '',
@@ -27,6 +31,10 @@ export default function Form() {
 
     const handleRegister = (formData) => {
         console.log(formData)
+        console.log("esta todo ok, envio al back")
+        setOrderView(!orderView)
+        reset()
+
     }
 
 
@@ -468,8 +476,15 @@ export default function Form() {
                     >continue & pay</button>
                 </Button>
 
-
             </div>
+
+            {/* //////// MODAL ////// */}
+
+            {orderView && (
+                <div className="fixed inset-0 flex items-center justify-center z-50">
+                    <Order onClose={() => setOrderView(false)} />
+                </div>
+            )}
 
         </div>
     )
