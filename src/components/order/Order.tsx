@@ -55,31 +55,79 @@ export default function Order({ onClose }: orderProps) {
 
 
                         <div className="flex items-center gap-8 mt-[22px] mb-[4px] pb-[5px] border-b">
-                            <div className="w-[100px] rounded-lg ">
-                                <img
-                                    src="./cart/image-yx1-earphones.jpg"
-                                    alt="img"
-                                    className="rounded-lg"
-                                />
-                            </div>
-                            <div className="flex justify-between w-full ">
-                                <div className="flex flex-col">
-                                    <span className="uppercase font-bold">xx99 mk ii</span>
-                                    <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 2,999</span>
+
+                            <div className="flex flex-col">
+
+                                <div className="flex">
+                                    <div className="w-[100px] rounded-lg ">
+                                        <img
+                                            src="./cart/image-yx1-earphones.jpg"
+                                            alt="img"
+                                            className="rounded-lg"
+                                        />
+                                    </div>
+                                    <div className="flex justify-between w-full ">
+                                        <div className="flex flex-col">
+                                            <span className="uppercase font-bold">xx99 mk ii</span>
+                                            <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 2,999</span>
+                                        </div>
+                                        <div className="text-[15px] font-bold text-gray-500">
+                                            x1
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="text-[15px] font-bold text-gray-500">
-                                    x1
+
+                                <div className="flex">
+                                    <div className="w-[100px] rounded-lg ">
+                                        <img
+                                            src="./cart/image-yx1-earphones.jpg"
+                                            alt="img"
+                                            className="rounded-lg"
+                                        />
+                                    </div>
+                                    <div className="flex justify-between w-full ">
+                                        <div className="flex flex-col">
+                                            <span className="uppercase font-bold">xx99 mk ii</span>
+                                            <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 2,999</span>
+                                        </div>
+                                        <div className="text-[15px] font-bold text-gray-500">
+                                            x1
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <div className="flex">
+                                    <div className="w-[100px] rounded-lg ">
+                                        <img
+                                            src="./cart/image-yx1-earphones.jpg"
+                                            alt="img"
+                                            className="rounded-lg"
+                                        />
+                                    </div>
+                                    <div className="flex justify-between w-full ">
+                                        <div className="flex flex-col">
+                                            <span className="uppercase font-bold">xx99 mk ii</span>
+                                            <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 2,999</span>
+                                        </div>
+                                        <div className="text-[15px] font-bold text-gray-500">
+                                            x1
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>
 
-                        <div className="py-2 text-[13px] font-bold text-gray-400 ">
-                            <div>and 2 other items(s)</div>
+
+
+                        <div className="py-2 text-[13px] font-bold text-gray-400 text-center ">
+                            {/* <div>and 2 other items(s)</div> */}
+                            <div>View less</div>
                         </div>
 
                     </div>
-                    <div className="bg-black-ec flex justify-start items-center w-[359px] rounded-tr-lg rounded-br-lg px-[35px]">
+                    <div className="bg-black-ec flex justify-start items-end w-[359px] rounded-tr-lg rounded-br-lg px-[35px] py-[25px]">
 
                         <div className="flex flex-col gap-2">
                             <div className="text-gray-600 uppercase">grand total</div>
