@@ -28,7 +28,7 @@ export default function Header() {
             </div>
             <div className="relative">
                 <img
-                    src="/icon-cart.svg"
+                    src="/shared/desktop/icon-cart.svg"
                     alt="cart logo"
                     className="cursor-pointer"
                     onClick={() => setCartView(!cartView)}
