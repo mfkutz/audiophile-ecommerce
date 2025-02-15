@@ -11,7 +11,7 @@ export default function FeatureSection() {
                 <div className=" flex md:absolute md:bottom-0 md:left-[115px] justify-center  text-white  ">
                     <div className="md:max-w-[410px] sps:max-w-[197px] max-w-[172px]">
                         <img
-                            src="./image-zx9.png"
+                            src={"./assets/home/image-zx9.png"}
                             alt="zx9"
                         />
                     </div>

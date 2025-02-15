@@ -1,3 +1,4 @@
+import { getProduct } from "@/api/ProductsApi";
 import Accesories from "@/components/Accesories";
 import Footer from "@/components/Footer";
 import HeroTitle from "@/components/Hero.title";
@@ -5,13 +6,29 @@ import NewProduct from "@/components/NewProduct";
 import NoticeSection from "@/components/Notice.section";
 import ProductDescription from "@/components/ProductDescription";
 import ProductDescriptionTwo from "@/components/ProductDescriptionTwo";
+import { useSmoothScrollToTop } from "@/hooks/useSmoothScroll";
+import { useQuery } from "@tanstack/react-query";
 
-// import productsData from "@/data/data.json"
 
 export default function Headphones() {
 
-    // const product = productsData.find(product => product.id === 1)
-    // console.log(product)
+    useSmoothScrollToTop()
+
+    const { data: products, error } = useQuery({
+        queryKey: ["products"],
+        queryFn: getProduct,
+        // staleTime: 0, //fresh data
+    })
+
+    const model = "67aba58a216fbbfa583ce268"
+    const model2 = "67aba571216fbbfa583ce256"
+    const model3 = "67aba53806c03bc37b566ade"
+
+    if (error) return <div className="flex bg-black-ec text-white h-screen justify-center items-center">
+        <div>
+            Ups...something it's wrong
+        </div>
+    </div>
 
     return (
         <>
@@ -19,13 +36,13 @@ export default function Headphones() {
                 <HeroTitle />
             </section>
             <section className="px-5">
-                <NewProduct />
+                <NewProduct products={products ?? []} model={model} />
             </section>
             <section className="px-5">
-                <ProductDescription />
+                <ProductDescription products={products ?? []} model={model2} />
             </section>
             <section className="px-5 md:mb-[240px]">
-                <ProductDescriptionTwo />
+                <ProductDescriptionTwo products={products ?? []} model={model3} />
             </section>
             <section className="flex-1 px-5" >
                 <Accesories />

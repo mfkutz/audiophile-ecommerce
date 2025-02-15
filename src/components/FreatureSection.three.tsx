@@ -6,7 +6,7 @@ export default function FreatureSectionThree() {
         <div className="max-w-screen-mk mx-auto flex flex-col acc:flex-row acc:gap-6 gap-[30px] md:mb-[45px] ">
 
             <div
-                className=" flex w-full rounded-lg bg-[url('./earphones-yx1-mobile.jpg')] sps:bg-[url('./earphones-yx1-tablet.jpg')] md:bg-[url('./earphones-yx1-desktop.jpg')]  bg-no-repeat bg-cover bg-center h-[200px] acc:h-auto  "
+                className=" flex w-full rounded-lg bg-[url('./assets/product-yx1-earphones/mobile/earphones-yx1-mobile.jpg')] sps:bg-[url('./assets/product-yx1-earphones/tablet/earphones-yx1-tablet.jpg')] md:bg-[url('./assets/product-yx1-earphones/desktop/earphones-yx1-desktop.jpg')]  bg-no-repeat bg-cover bg-center h-[200px] acc:h-auto  "
             >
 
             </div>

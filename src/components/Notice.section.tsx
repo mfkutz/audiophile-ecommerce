@@ -24,7 +24,7 @@ export default function NoticeSection() {
             </div>
 
             <div
-                className=" flex w-full rounded-lg bg-[url('./image-best-gear-mobile.jpg')] sps:bg-[url('./image-best-gear-tablet.jpg')] md:bg-[url('./image-best-gear-desktop.jpg')]  bg-no-repeat bg-cover bg-center  h-[300px] md:h-auto"
+                className=" flex w-full rounded-lg bg-[url('./assets/shared/mobile/image-best-gear-mobile.jpg')] sps:bg-[url('./assets/shared/tablet/image-best-gear-tablet.jpg')] md:bg-[url('./assets/shared/desktop/image-best-gear-desktop.jpg')]  bg-no-repeat bg-cover bg-center  h-[300px] md:h-auto"
             >
 
             </div>

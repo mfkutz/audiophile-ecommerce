@@ -112,3 +112,7 @@ h6 {
     @apply bg-background text-foreground;
   }
 }
+
+.coverM {
+  background-size: cover;
+}
