@@ -1,5 +1,6 @@
 import { getProduct } from "@/api/ProductsApi";
 import Accesories from "@/components/Accesories";
+import { SpinnerDotted } from "spinners-react";
 import Footer from "@/components/Footer";
 import HeroTitle from "@/components/Hero.title";
 import NewProduct from "@/components/NewProduct";
@@ -10,13 +11,17 @@ import { useQuery } from "@tanstack/react-query";
 export default function Earphones() {
     useSmoothScrollToTop()
 
-    const { data: products, error } = useQuery({
+    const { data: products, isLoading, error } = useQuery({
         queryKey: ["products"],
         queryFn: getProduct,
         // staleTime: 0,
     })
 
     const model = "67aba52906c03bc37b566acb"
+
+    if (isLoading) return <div className="flex bg-white-ec h-screen justify-center items-center">
+        <SpinnerDotted color="#D87D4A" />
+    </div>
 
     if (error) return <div className="flex bg-black-ec text-white h-screen justify-center items-center">
         <div>

@@ -1,4 +1,5 @@
 import { getProduct } from "@/api/ProductsApi";
+import { SpinnerDotted } from "spinners-react"
 import Accesories from "@/components/Accesories";
 import Footer from "@/components/Footer";
 import HeroTitle from "@/components/Hero.title";
@@ -11,7 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 export default function Speakers() {
 
     useSmoothScrollToTop()
-    const { data: products, error } = useQuery({
+    const { data: products, isLoading, error } = useQuery({
         queryKey: ["products"],
         queryFn: getProduct,
         // staleTime: 0
@@ -19,6 +20,11 @@ export default function Speakers() {
 
     const model = "67aba5a8216fbbfa583ce28e"
     const model2 = "67aba599216fbbfa583ce27b"
+
+    if (isLoading) return <div className="flex bg-white-ec h-screen justify-center items-center">
+        <SpinnerDotted color="#D87D4A" />
+    </div>
+
 
     if (error) return <div className="flex bg-black-ec text-white h-screen justify-center items-center">
         <div>

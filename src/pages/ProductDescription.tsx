@@ -1,5 +1,6 @@
 import { getProduct } from "@/api/ProductsApi";
 import Accesories from "@/components/Accesories";
+import { SpinnerDotted } from "spinners-react";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import Gallery from "@/components/Galery";
@@ -21,7 +22,9 @@ export default function ProductDescription() {
         queryFn: getProduct
     })
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading) return <div className="flex bg-white-ec h-screen justify-center items-center">
+        <SpinnerDotted color="#D87D4A" />
+    </div>
 
     if (error) return <div className="flex bg-black-ec text-white h-screen justify-center items-center">
         <div>

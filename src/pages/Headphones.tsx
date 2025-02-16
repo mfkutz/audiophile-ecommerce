@@ -8,13 +8,14 @@ import ProductDescription from "@/components/ProductDescription";
 import ProductDescriptionTwo from "@/components/ProductDescriptionTwo";
 import { useSmoothScrollToTop } from "@/hooks/utils";
 import { useQuery } from "@tanstack/react-query";
+import { SpinnerDotted } from "spinners-react";
 
 
 export default function Headphones() {
 
     useSmoothScrollToTop()
 
-    const { data: products, error } = useQuery({
+    const { data: products, isLoading, error } = useQuery({
         queryKey: ["products"],
         queryFn: getProduct,
         // staleTime: 0, //fresh data
@@ -23,6 +24,10 @@ export default function Headphones() {
     const model = "67aba58a216fbbfa583ce268"
     const model2 = "67aba571216fbbfa583ce256"
     const model3 = "67aba53806c03bc37b566ade"
+
+    if (isLoading) return <div className="flex bg-white-ec h-screen justify-center items-center">
+        <SpinnerDotted color="#D87D4A" />
+    </div>
 
     if (error) return <div className="flex bg-black-ec text-white h-screen justify-center items-center">
         <div>
