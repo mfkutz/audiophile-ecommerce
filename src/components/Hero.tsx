@@ -1,13 +1,6 @@
-import { ProductData } from "@/types";
 import Text from "./hero/Text";
 
-type HeroProps = {
-    products: ProductData[];
-};
-
-export default function Hero({ products }: HeroProps) {
-
-    console.log('from Hero', products)
+export default function Hero() {
     return (
         <section className="relative flex max-w-screen-mk mx-auto">
             <div className="hidden sp:flex">

@@ -5,7 +5,7 @@ import HeroTitle from "@/components/Hero.title";
 import NewProduct from "@/components/NewProduct";
 import NoticeSection from "@/components/Notice.section";
 import ProductDescription from "@/components/ProductDescription";
-import { useSmoothScrollToTop } from "@/hooks/useSmoothScroll";
+import { useSmoothScrollToTop } from "@/hooks/utils";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Speakers() {

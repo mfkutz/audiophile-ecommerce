@@ -30,8 +30,8 @@ export default function Form() {
 
 
     const handleRegister = (formData) => {
-        console.log(formData)
-        console.log("esta todo ok, envio al back")
+        // console.log(formData)
+        // console.log("esta todo ok, envio al back")
         setOrderView(!orderView)
         reset()
 

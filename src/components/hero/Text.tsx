@@ -15,7 +15,7 @@ export default function Text() {
         variant="default"
         asChild
       >
-        <Link to="/">see product</Link>
+        <Link to={`/67aba58a216fbbfa583ce268`}>see product</Link>
       </Button>
 
     </div>

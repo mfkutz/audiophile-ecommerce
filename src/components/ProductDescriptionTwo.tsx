@@ -11,8 +11,6 @@ export default function ProductDescriptionTwo({ products, model }: ProductDescri
 
     const prod = products.find(findId => findId._id === model)
 
-    console.log('from two', prod)
-
     return (
         <div className="max-w-screen-mk mx-auto flex flex-col md:flex-row justify-between gap-5 mt-[-8px] sps:mt-[9px] md:mt-[160px] ">
 

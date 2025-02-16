@@ -9,7 +9,7 @@ export default function FeatureSectionTwo() {
                 <Button
                     asChild
                     variant="secondary" >
-                    <Link to="/">
+                    <Link to="/67aba599216fbbfa583ce27b">
                         see product
                     </Link>
                 </Button >

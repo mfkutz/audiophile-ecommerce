@@ -19,7 +19,7 @@ export default function FreatureSectionThree() {
                     <Button
                         asChild
                         variant="secondary" >
-                        <Link to="/">
+                        <Link to="/67aba52906c03bc37b566acb">
                             see product
                         </Link>
                     </Button >

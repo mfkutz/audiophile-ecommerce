@@ -6,7 +6,7 @@ import NewProduct from "@/components/NewProduct";
 import NoticeSection from "@/components/Notice.section";
 import ProductDescription from "@/components/ProductDescription";
 import ProductDescriptionTwo from "@/components/ProductDescriptionTwo";
-import { useSmoothScrollToTop } from "@/hooks/useSmoothScroll";
+import { useSmoothScrollToTop } from "@/hooks/utils";
 import { useQuery } from "@tanstack/react-query";
 
 

@@ -5,25 +5,15 @@ import FeatureSectionTwo from "../components/Feature.section.two";
 import Hero from "../components/Hero";
 import NoticeSection from "@/components/Notice.section";
 import Footer from "@/components/Footer";
-import { getProduct } from "@/api/ProductsApi";
-import { useQuery } from "@tanstack/react-query";
-import { useSmoothScrollToTop } from "@/hooks/useSmoothScroll";
+import { useSmoothScrollToTop } from "@/hooks/utils";
 
 export default function Home() {
     useSmoothScrollToTop()
 
-    const { data: products, error } = useQuery({
-        queryKey: ["product"],
-        queryFn: getProduct,
-    })
-
-    // if (isLoading) return <p>Cargando productos...</p>;
-    if (error) return <p>Error al cargar productos: {error.message}</p>;
-
     return (
         <>
             <section className="flex-1 bg-black-esp px-1 sp:px-5">
-                <Hero products={products ?? []} />
+                <Hero />
             </section>
             <section className="px-5">
                 <Accesories />

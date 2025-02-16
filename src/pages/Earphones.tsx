@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import HeroTitle from "@/components/Hero.title";
 import NewProduct from "@/components/NewProduct";
 import NoticeSection from "@/components/Notice.section";
-import { useSmoothScrollToTop } from "@/hooks/useSmoothScroll";
+import { useSmoothScrollToTop } from "@/hooks/utils";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Earphones() {

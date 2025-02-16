@@ -17,10 +17,6 @@ export default function NewProduct({ products, model }: HeroProps) {
     return (
         <div className="max-w-screen-mk mx-auto flex flex-col md:flex-row justify-between gap-5 mt-[63px] sps:mt-[120px] md:mt-[160px] ">
 
-            {/* <div className={`flex w-full rounded-lg bg-[url('./assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg')] md:bg-[url('./assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg')] bg-no-repeat bg-cover bg-center h-[350px] md:h-auto`} /> */}
-
-            {/* <div className={`flex w-full rounded-lg bg-[url('${prod?.categoryImage.tablet}')] md:bg-[url(${prod?.categoryImage.tablet}')] bg-no-repeat bg-cover bg-center h-[350px] md:h-auto`} /> */}
-
             <div className="relative w-full h-[350px] md:h-auto rounded-lg">
                 <img
                     src={prod?.categoryImage.tablet}
@@ -33,7 +29,6 @@ export default function NewProduct({ products, model }: HeroProps) {
                     className="hidden md:block w-full h-full object-cover rounded-lg"
                 />
             </div>
-
 
             <div className=" rounded-lg flex justify-center text-center md:text-left md:justify-end w-full">
 

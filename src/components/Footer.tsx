@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Facebook from "./socialIcons/Facebook";
 import Twitter from "./socialIcons/Twitter";
@@ -6,8 +6,6 @@ import Instagram from "./socialIcons/Instagram";
 
 export default function Footer() {
 
-    const location = useLocation()
-    console.log(location)
 
     return (
         <div className="max-w-screen-mk mx-auto flex flex-col ">

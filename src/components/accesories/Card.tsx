@@ -9,6 +9,7 @@ type CardProps = {
 }
 
 export default function Card({ element, image, move, isLarge }: CardProps) {
+    const link = `/${element}`
     return (
         <div
             className="flex flex-col  bg-white-ec rounded-lg w-full text-center h-[160px] sps:h-[200px] justify-end py-7 items-center relative max-w-[350px]"
@@ -21,7 +22,7 @@ export default function Card({ element, image, move, isLarge }: CardProps) {
             />
             <p className="uppercase font-bold text-[15px] sps:text-[18px] mb-[5px] tracking-wider ">{element}</p>
 
-            <Link to="/">
+            <Link to={link}>
                 <ButtonShop />
             </Link>
         </div>

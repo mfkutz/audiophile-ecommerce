@@ -30,7 +30,7 @@ export default function FeatureSection() {
                         asChild
                         variant="primary"
                     >
-                        <Link to="/">see product</Link>
+                        <Link to="/67aba5a8216fbbfa583ce28e">see product</Link>
                     </Button>
                 </div>
             </div>
