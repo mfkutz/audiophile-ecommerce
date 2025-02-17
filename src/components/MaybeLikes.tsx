@@ -10,7 +10,7 @@ export default function MaybeLikes({ products, model }: MaybeLikesProps) {
 
     const prod = products.find(findId => findId._id === model)
 
-    console.log("Here in maybe like", prod)
+    // console.log("Here in maybe like", prod)
 
     return (
         <div className="max-w-screen-mk mx-auto flex flex-col ">

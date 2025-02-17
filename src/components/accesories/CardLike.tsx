@@ -14,7 +14,7 @@ type CardLikeProps = {
 }
 
 export default function CardLike({ itemId, name, image }: CardLikeProps) {
-    console.log(itemId)
+    // console.log(itemId)
     // console.log('from card of maybe', image.mobile)
     // console.log('from card of maybe', image.tablet)
     return (

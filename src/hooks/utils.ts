@@ -1,5 +1,11 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+export function useGoBack() {
+    const navigate = useNavigate()
+    return () => navigate(-1)
+}
 
 export function useSmoothScrollToTop() {
     const location = useLocation()

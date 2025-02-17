@@ -42,7 +42,7 @@ export default function NewProduct({ products, model }: HeroProps) {
                         asChild
                         variant="default"
                     >
-                        <Link to="/mark-two">see product</Link>
+                        <Link to={`/${model}`}>see product</Link>
                     </Button>
                 </div>
             </div>

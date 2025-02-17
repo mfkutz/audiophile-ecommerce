@@ -8,6 +8,20 @@ import { useState } from "react";
 export default function Header() {
     const [cartView, setCartView] = useState(false)
 
+    const [cartCount, setCartCount] = useState(0)
+    const [isAnimating, setIsAnimating] = useState(false)
+    const [viewCircle, setViewCircle] = useState(false)
+
+
+    const addToCart = () => {
+        setCartCount(cartCount + 1)
+        setIsAnimating(true)
+
+        setTimeout(() => {
+            setIsAnimating(false)
+        }, 500)
+    }
+
 
 
     return (
@@ -38,6 +52,13 @@ export default function Header() {
 
                 <div className={`absolute top-[90px] right-0 z-50 ${cartView ? "" : "hidden"} `}>
                     <Checkout onClose={() => setCartView(false)} />
+                </div>
+
+                {/* Circle anim */}
+                <div
+                    className={`absolute top-[-12px] right-[-20px] w-6 h-6 flex items-center justify-center bg-red-500 text-white rounded-full text-xs font-semibold transition-transform duration-500 ${isAnimating ? "scale-125" : "scale-100"} ${viewCircle ? "" : "hidden"}`}
+                >
+                    3
                 </div>
             </div>
 

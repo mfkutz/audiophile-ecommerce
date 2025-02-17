@@ -39,7 +39,7 @@ export default function ProductDescription({ products, model }: ProductDescripti
                         asChild
                         variant="default"
                     >
-                        <Link to="/">see product</Link>
+                        <Link to={`/${model}`}>see product</Link>
                     </Button>
                 </div>
             </div>

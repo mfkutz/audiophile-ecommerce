@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ProductData } from "@/types";
-import { formatCurrency } from "@/hooks/utils";
+import { formatCurrency, useGoBack } from "@/hooks/utils";
 
 type NewProductAddProps = {
     products: ProductData[],
@@ -12,13 +12,20 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
 
     const prod = products.find(findId => findId._id === model)
 
+    const goBack = useGoBack()
+
     // console.log(products)
     // console.log(model)
 
     return (
         <>
             <div className="max-w-screen-mk mx-auto flex flex-col md:flex-row justify-between gap-5 mt-[63px] sps:mt-[120px] md:mt-[160px] relative ">
-                <div className="absolute left-0 sps:top-[-60px] top-[-50px] md:top-[-78px] text-gray-text-prod text-[15px] hover:cursor-pointer">Go Back</div>
+                <div
+                    className="absolute left-0 sps:top-[-60px] top-[-50px] md:top-[-78px] text-gray-text-prod text-[15px] hover:cursor-pointer"
+                    onClick={goBack}
+                >
+                    Go Back
+                </div>
 
                 {/* <div className="flex w-full rounded-lg bg-[url('./xx99two/xx99image-product-tablet.png')] md:bg-[url('./xx99two/xx99image-product-desktop.jpg')] bg-no-repeat bg-cover bg-center h-[350px] md:h-auto" /> */}
 

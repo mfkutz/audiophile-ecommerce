@@ -7,14 +7,11 @@ type FeaturesProps = {
 
 export default function Features({ products, model }: FeaturesProps) {
 
-    console.log(products)
-    console.log(model)
+    // console.log(products)
+    // console.log(model)
 
     const prod = products.find(findId => findId._id === model)
-    console.log(prod)
-
-
-
+    // console.log(prod)
 
     if (!model) return <div className="flex text-black bg-red-400 justify-center items-center">
         <div>

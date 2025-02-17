@@ -44,7 +44,7 @@ export default function ProductDescriptionTwo({ products, model }: ProductDescri
                         asChild
                         variant="default"
                     >
-                        <Link to="/">see product</Link>
+                        <Link to={`/${model}`}>see product</Link>
                     </Button>
                 </div>
             </div>
