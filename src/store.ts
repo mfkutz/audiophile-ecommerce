@@ -2,13 +2,11 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { ProductData } from "@/types";
 
-// Definir la estructura del carrito
 type CartItem = {
     product: ProductData;
     quantity: number;
 };
 
-// Definir el estado del store
 type CartState = {
     cart: CartItem[];
     addToCart: (product: ProductData, quantity?: number) => void;
