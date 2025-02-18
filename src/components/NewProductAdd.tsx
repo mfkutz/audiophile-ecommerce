@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ProductData } from "@/types";
 import { formatCurrency, useGoBack } from "@/hooks/utils";
+import { useCartStore } from "@/store";
+import { useState } from "react";
 
 type NewProductAddProps = {
     products: ProductData[],
@@ -13,6 +15,16 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
     const prod = products.find(findId => findId._id === model)
 
     const goBack = useGoBack()
+
+    const addToCart = useCartStore((state) => state.addToCart)
+
+    const [quantity, setQuantity] = useState(1)
+
+    const handleAddCart = () => {
+        if (prod) {
+            addToCart(prod, quantity)
+        }
+    }
 
     // console.log(products)
     // console.log(model)
@@ -26,9 +38,6 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
                 >
                     Go Back
                 </div>
-
-                {/* <div className="flex w-full rounded-lg bg-[url('./xx99two/xx99image-product-tablet.png')] md:bg-[url('./xx99two/xx99image-product-desktop.jpg')] bg-no-repeat bg-cover bg-center h-[350px] md:h-auto" /> */}
-
 
                 <div className="relative w-full h-[350px] md:h-auto rounded-lg">
                     <img
@@ -49,9 +58,6 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
                         <p className="font-normal text-[14px] leading-[19px] tracking-[10px] uppercase text-more-ec mt-[10px] sps:mt-[32px] md:mt-[78px]">new product</p>
                         <h2 className="mt-[27px] sps:mt-[15px] leading-[39px] sps:leading-[45px] max-w-[350px] text-[28px] sps:text-[40px]">{prod?.name}</h2>
                         <p className="mt-[22px] sps:mt-[33px] text-[15px] leading-[24.5px] mb-[23px] sps:mb-[32px] text-gray-text-prod ">
-                            {/* The new XX99 Mark II headphones is the pinnacle of pristine audio.
-                            It redefines your premium headphone experience by reproducing the
-                            balanced depth and precision of studio-quality sound. */}
                             {prod?.description}
                         </p>
 
@@ -59,25 +65,29 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
                             {prod?.price !== undefined ? formatCurrency(prod.price) : "Not available"}
                         </div>
 
-
                         <div className="flex items-center gap-4 mt-[42px]">
                             <div className="w-[120px] h-[48px] bg-white-ec flex flex-row items-center justify-between px-5">
-                                <div className="hover:text-more-ec cursor-pointer px-2 text-[16px] font-bold text-black-cc opacity-40 hover:opacity-100">-</div>
-                                <div className="text-[13px] font-bold">1</div>
-                                <div className="hover:text-more-ec cursor-pointer px-2 text-[16px] pt-[1px] font-bold text-black-cc opacity-40 hover:opacity-100">+</div>
+                                <div
+                                    className="hover:text-more-ec cursor-pointer px-2 text-[16px] font-bold text-black-cc opacity-40 hover:opacity-100"
+                                    onClick={() => setQuantity((q) => q - 1)}
+                                >-</div>
+                                <div className="text-[13px] font-bold">{quantity}</div>
+                                <div
+                                    className="hover:text-more-ec cursor-pointer px-2 text-[16px] pt-[1px] font-bold text-black-cc opacity-40 hover:opacity-100"
+                                    onClick={() => setQuantity((q) => q + 1)}
+                                >+</div>
                             </div>
                             <Button
-                                asChild
+                                onClick={handleAddCart}
                                 variant="default"
                             >
-                                <Link to="/headphones/mark-two">add to cart</Link>
+                                {/* <Link to="/headphones/mark-two">add to cart</Link> */}
+                                Add to Cart
                             </Button>
                         </div>
 
-
                     </div>
                 </div>
-
 
             </div>
         </>

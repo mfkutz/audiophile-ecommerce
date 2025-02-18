@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useEffect, useRef } from "react";
+import { useCartStore } from "@/store";
 
 type checkoutProps = {
     onClose: () => void
@@ -29,6 +30,11 @@ export default function Checkout({ onClose }: checkoutProps) {
         onClose();
     };
 
+
+    const { cart, removeFromCart, clearCart } = useCartStore()
+
+    console.log(cart)
+
     return (
         <>
             <div className="fixed inset-0 bg-black bg-opacity-50 -z-40" onClick={onClose}></div>
@@ -37,13 +43,44 @@ export default function Checkout({ onClose }: checkoutProps) {
                 ref={modalRef}
                 className="bg-white h-fit rounded-lg py-[60px] px-[30px] w-[374px]  ">
 
-                <h5 className="font-bold text-[18px] uppercase">
-                    Sumary
-                </h5>
+                <div className="flex items-center justify-between">
+                    <h5 className="font-bold text-[18px] uppercase">
+                        Cart
+                    </h5>
+                    <div
+                        onClick={clearCart}
+                        className="hover:cursor-pointer"
+                    >Remove all</div>
+
+                </div>
 
                 <div className="mt-[20px]">
 
-                    <div className="flex justify-between items-center gap-4">
+                    {cart.length === 0 ? <p>Your cart is empty</p> : null}
+
+                    {cart.map((item => (
+                        <div className="flex justify-between items-center gap-4" key={item.product._id}>
+                            <div className="w-[94px]  rounded-lg ">
+                                <img
+                                    src="./cart/image-xx99-mark-two-headphones.jpg"
+                                    alt="img"
+                                    className="rounded-lg"
+                                />
+                            </div>
+                            <div className="flex justify-between w-full ">
+                                <div className="flex flex-col">
+                                    <span className="uppercase font-bold">{item.product.name}</span>
+                                    <span className="text-[15px] font-bold text-gray-500 mt-[3px]">{item.product.price}</span>
+                                </div>
+                                <div className="text-[15px] font-bold text-gray-500">
+                                    {item.quantity}
+                                </div>
+                            </div>
+
+                        </div>
+                    )))}
+
+                    {/* <div className="flex justify-between items-center gap-4">
                         <div className="w-[94px]  rounded-lg ">
                             <img
                                 src="./cart/image-xx99-mark-two-headphones.jpg"
@@ -61,9 +98,9 @@ export default function Checkout({ onClose }: checkoutProps) {
                             </div>
                         </div>
 
-                    </div>
+                    </div> */}
 
-                    <div className="flex justify-between items-center gap-4 mt-[22px]">
+                    {/* <div className="flex justify-between items-center gap-4 mt-[22px]">
                         <div className="w-[94px]  rounded-lg ">
                             <img
                                 src="./cart/image-xx59-headphones.jpg"
@@ -81,9 +118,9 @@ export default function Checkout({ onClose }: checkoutProps) {
                             </div>
                         </div>
 
-                    </div>
+                    </div> */}
 
-                    <div className="flex justify-between items-center gap-4 mt-[22px]">
+                    {/* <div className="flex justify-between items-center gap-4 mt-[22px]">
                         <div className="w-[94px]  rounded-lg ">
                             <img
                                 src="./cart/image-yx1-earphones.jpg"
@@ -101,7 +138,7 @@ export default function Checkout({ onClose }: checkoutProps) {
                             </div>
                         </div>
 
-                    </div>
+                    </div> */}
 
                 </div>
 

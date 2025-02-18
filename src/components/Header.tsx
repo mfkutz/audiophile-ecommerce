@@ -3,24 +3,38 @@ import Logo from "./Logo";
 import Hamburguer from "./Hamburguer";
 import MenuMobile from "./menuMobile/MenuMobile";
 import Checkout from "./checkout/Checkout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCartStore } from "@/store";
 
 export default function Header() {
     const [cartView, setCartView] = useState(false)
-
-    const [cartCount, setCartCount] = useState(0)
+    const [cantProd, setCantProd] = useState(0)
     const [isAnimating, setIsAnimating] = useState(false)
     const [viewCircle, setViewCircle] = useState(false)
+    const { cart, removeFromCart, clearCart } = useCartStore()
 
+    useEffect(() => {
+        const prodInCart = cart.map(item => item.quantity)
+        const totalProducts = prodInCart.reduce((acc, cur) => acc + cur, 0)
 
-    const addToCart = () => {
-        setCartCount(cartCount + 1)
-        setIsAnimating(true)
+        setCantProd(totalProducts)
+
+        if (cart.length > 0) {
+            console.log("Me ejecuté")
+            setViewCircle(true)
+            setIsAnimating(true)
+        } else {
+            setViewCircle(false)
+            setIsAnimating(false)
+        }
 
         setTimeout(() => {
             setIsAnimating(false)
-        }, 500)
-    }
+        }, 300);
+
+    }, [cart, removeFromCart, clearCart])
+
+
 
 
 
@@ -56,10 +70,12 @@ export default function Header() {
 
                 {/* Circle anim */}
                 <div
-                    className={`absolute top-[-12px] right-[-20px] w-6 h-6 flex items-center justify-center bg-red-500 text-white rounded-full text-xs font-semibold transition-transform duration-500 ${isAnimating ? "scale-125" : "scale-100"} ${viewCircle ? "" : "hidden"}`}
+                    className={`absolute top-[-12px] right-[-20px] w-6 h-6 flex items-center justify-center bg-red-500 text-white rounded-full text-xs font-semibold transition-transform duration-200 ease-out ${isAnimating ? " scale-125" : "scale-100"} ${viewCircle ? "" : "hidden"}`}
                 >
-                    3
+                    {cantProd}
                 </div>
+
+
             </div>
 
         </header>

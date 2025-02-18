@@ -43,7 +43,7 @@ export default function ProductDescription() {
             </section>
 
             <section className="px-5 mt-[-100px] sps:mt-[-180px] acc:mt-[-190px] md:mt-[100px] sp:mt-[160px] mb-[200px] acc:mb-[240px] md:mb-[-1px]">
-                <Gallery />
+                <Gallery products={products ?? []} model={id} />
             </section>
 
             <section className="px-5 md:mt-[166px] mt-[-130px] flex-1 ">
