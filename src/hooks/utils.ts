@@ -23,3 +23,4 @@ export function formatCurrency(amount: number) {
         maximumFractionDigits: 0
     }).format(amount).replace('$', '$ ') //add space
 }
+

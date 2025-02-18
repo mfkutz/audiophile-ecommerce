@@ -8,19 +8,22 @@ import { useCartStore } from "@/store";
 
 export default function Header() {
     const [cartView, setCartView] = useState(false)
-    const [cantProd, setCantProd] = useState(0)
+    // const [cantProd, setCantProd] = useState(0)
     const [isAnimating, setIsAnimating] = useState(false)
     const [viewCircle, setViewCircle] = useState(false)
-    const { cart, removeFromCart, clearCart } = useCartStore()
+    const { cart, removeFromCart, clearCart, getTotalProducts } = useCartStore()
+
+    const cantProd = getTotalProducts()
 
     useEffect(() => {
-        const prodInCart = cart.map(item => item.quantity)
-        const totalProducts = prodInCart.reduce((acc, cur) => acc + cur, 0)
+        // const prodInCart = cart.map(item => item.quantity)
+        // const totalProducts = prodInCart.reduce((acc, cur) => acc + cur, 0)
 
-        setCantProd(totalProducts)
+
+        // setCantProd(totalProducts)
 
         if (cart.length > 0) {
-            console.log("Me ejecuté")
+            // console.log("Me ejecuté")
             setViewCircle(true)
             setIsAnimating(true)
         } else {

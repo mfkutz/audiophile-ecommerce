@@ -12,6 +12,8 @@ type CartState = {
     addToCart: (product: ProductData, quantity?: number) => void;
     removeFromCart: (id: string) => void;
     clearCart: () => void;
+    getTotalProducts: () => number
+    getTotalPrice: () => number
 };
 
 // Store with persist
@@ -48,9 +50,18 @@ export const useCartStore = create<CartState>()(
 
             // Empty cart
             clearCart: () => set({ cart: [] }),
+
+            //get total quantity in the cart
+            getTotalProducts: () => {
+                return get().cart.reduce((acc, item) => acc + item.quantity, 0)
+            },
+
+            getTotalPrice: () => {
+                return get().cart.reduce((acc, item) => acc + (item.quantity * (item.product.price)), 0)
+            }
         }),
         {
-            name: "cart-storage", // Clave en localStorage
+            name: "cart-storage", // key localSorage
         }
     )
 );
