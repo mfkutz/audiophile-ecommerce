@@ -41,14 +41,14 @@ export const useCartStore = create<CartState>()(
                 });
             },
 
-            // Eliminar un producto por su ID
+            // Delete by ID
             removeFromCart: (id) => {
                 set((state) => ({
                     cart: state.cart.filter((item) => item.product._id !== id),
                 }));
             },
 
-            // Vaciar el carrito
+            // Empty cart
             clearCart: () => set({ cart: [] }),
         }),
         {
