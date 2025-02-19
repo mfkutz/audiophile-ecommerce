@@ -14,6 +14,7 @@ type CartState = {
     clearCart: () => void;
     getTotalProducts: () => number
     getTotalPrice: () => number
+    updateQuantity: (id: string, quantity: number) => void
 };
 
 // Store with persist
@@ -28,6 +29,8 @@ export const useCartStore = create<CartState>()(
                     const existingItem = state.cart.find((item) => item.product._id === product._id);
 
                     if (existingItem) {
+                        //no more of 5 same products TO DO
+
                         return {
                             cart: state.cart.map((item) =>
                                 item.product._id === product._id
@@ -36,6 +39,9 @@ export const useCartStore = create<CartState>()(
                             ),
                         };
                     }
+
+
+
 
                     return { cart: [...state.cart, { product, quantity }] };
                 });
@@ -58,7 +64,20 @@ export const useCartStore = create<CartState>()(
 
             getTotalPrice: () => {
                 return get().cart.reduce((acc, item) => acc + (item.quantity * (item.product.price)), 0)
-            }
+            },
+
+            //update quantity from + or -
+            updateQuantity: (id, quantity) => {
+                set((state) => ({
+                    cart: state.cart
+                        .map((item) =>
+                            item.product._id === id
+                                ? { ...item, quantity: Math.max(item.quantity + quantity, 0) }
+                                : item
+                        )
+                        .filter((item) => item.quantity > 0),
+                }));
+            },
         }),
         {
             name: "cart-storage", // key localSorage

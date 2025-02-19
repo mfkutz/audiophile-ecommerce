@@ -32,7 +32,7 @@ export default function Checkout({ onClose }: checkoutProps) {
     };
 
 
-    const { cart, removeFromCart, clearCart, getTotalProducts, getTotalPrice } = useCartStore()
+    const { cart, removeFromCart, clearCart, getTotalProducts, getTotalPrice, updateQuantity } = useCartStore()
 
     const cantProd = getTotalProducts()
     const totalPrice = getTotalPrice()
@@ -113,12 +113,12 @@ export default function Checkout({ onClose }: checkoutProps) {
                                 <div className="w-[95px] h-[33px] bg-white-ec flex flex-row items-center justify-between px-2 ">
                                     <div
                                         className="hover:text-more-ec cursor-pointer px-2 text-[16px] font-bold text-black-cc opacity-40 hover:opacity-100 "
-                                    // onClick={() => setQuantity((q) => q - 1)}
+                                        onClick={() => updateQuantity(item.product._id, -1)}
                                     >-</div>
                                     <div className="text-[13px] font-bold">{item.quantity}</div>
                                     <div
                                         className="hover:text-more-ec cursor-pointer px-2 text-[16px] pt-[1px] font-bold text-black-cc opacity-40 hover:opacity-100"
-                                    // onClick={() => setQuantity((q) => q + 1)}
+                                        onClick={() => updateQuantity(item.product._id, 1)}
                                     >+</div>
                                 </div>
                             </div>

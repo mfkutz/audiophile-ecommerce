@@ -67,15 +67,16 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
 
                         <div className="flex items-center gap-4 mt-[42px]">
                             <div className="w-[120px] h-[48px] bg-white-ec flex flex-row items-center justify-between px-5">
-                                <div
+                                <button
                                     className="hover:text-more-ec cursor-pointer px-2 text-[16px] font-bold text-black-cc opacity-40 hover:opacity-100"
                                     onClick={() => setQuantity((q) => q - 1)}
-                                >-</div>
+                                    disabled={quantity <= 1}
+                                >-</button>
                                 <div className="text-[13px] font-bold">{quantity}</div>
-                                <div
+                                <button
                                     className="hover:text-more-ec cursor-pointer px-2 text-[16px] pt-[1px] font-bold text-black-cc opacity-40 hover:opacity-100"
                                     onClick={() => setQuantity((q) => q + 1)}
-                                >+</div>
+                                >+</button>
                             </div>
                             <Button
                                 onClick={handleAddCart}
