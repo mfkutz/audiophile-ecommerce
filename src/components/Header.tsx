@@ -57,7 +57,7 @@ export default function Header() {
                     <Link to="/earphones" className=" tracking-[2px] font-bold text-[13px] hover:text-more-ec transition-colors duration-200">Earphones</Link >
                 </nav>
             </div>
-            <div className="relative">
+            <div className="relative ">
                 <img
                     src="./assets/shared/desktop/icon-cart.svg"
                     alt="cart logo"
@@ -73,7 +73,8 @@ export default function Header() {
 
                 {/* Circle anim */}
                 <div
-                    className={`absolute top-[-12px] right-[-20px] w-6 h-6 flex items-center justify-center bg-red-500 text-white rounded-full text-xs font-semibold transition-transform duration-200 ease-out ${isAnimating ? " scale-125" : "scale-100"} ${viewCircle ? "" : "hidden"}`}
+                    className={`absolute cursor-pointer top-[-12px] right-[-20px] w-6 h-6 flex items-center justify-center bg-red-500 text-white rounded-full text-xs font-semibold transition-transform duration-200 ease-out ${isAnimating ? " scale-125" : "scale-100"} ${viewCircle ? "" : "hidden"}`}
+                    onClick={() => setCartView(!cartView)}
                 >
                     {cantProd}
                 </div>

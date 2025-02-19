@@ -5,6 +5,8 @@ import ErrorMessage from "../errorMessage/ErrorMessage"
 import { useState } from "react"
 import { Button } from "../ui/button"
 import Order from "../order/Order"
+import { useCartStore } from "@/store"
+import { formatCurrency, useGoBack } from "@/hooks/utils"
 
 export default function Form() {
 
@@ -31,7 +33,7 @@ export default function Form() {
 
     const handleRegister = (formData) => {
         // console.log(formData)
-        // console.log("esta todo ok, envio al back")
+        console.log("esta todo ok, envio al back", formData, cart)
         setOrderView(!orderView)
         reset()
 
@@ -42,11 +44,24 @@ export default function Form() {
         setSelectedMethod(method)
     }
 
+
+    const { cart, getTotalPrice } = useCartStore()
+
+    const totalPrice = getTotalPrice()
+
+    const goBack = useGoBack()
+
+
+
     return (
 
         <div className="flex gap-[30px] relative">
 
-            <div className=" absolute left-0 sps:top-[-60px] top-[-50px] md:top-[-78px] text-gray-text-prod text-[15px] hover:cursor-pointer">Go Back</div>
+            <div
+                className=" absolute hover:underline hover:text-more-ec left-0 sps:top-[-60px] top-[-50px] md:top-[-78px] text-gray-text-prod text-[15px] hover:cursor-pointer"
+                onClick={goBack}
+
+            >Go Back</div>
 
             <div className="bg-white max-w-[730px] rounded-lg py-[60px] px-[48px] ">
                 <h3>checkout</h3>
@@ -357,65 +372,46 @@ export default function Form() {
 
                 <div className="mt-[20px]">
 
-                    <div className="flex justify-between items-center gap-4">
-                        <div className="w-[94px]  rounded-lg ">
-                            <img
-                                src="./cart/image-xx99-mark-two-headphones.jpg"
-                                alt="img"
-                                className="rounded-lg"
-                            />
-                        </div>
-                        <div className="flex justify-between w-full ">
-                            <div className="flex flex-col">
-                                <span className="uppercase font-bold">xx99 mk ii</span>
-                                <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 2,299</span>
+
+                    {cart.map((item) => (
+
+                        <div className="flex justify-between items-center gap-4 mt-6" key={item.product._id}>
+                            <div className="w-[94px]  rounded-lg ">
+                                <img
+                                    src={item.product.image.mobile}
+                                    alt={item.product.name}
+                                    className="rounded-lg"
+                                />
                             </div>
-                            <div className="text-[15px] font-bold text-gray-500">
-                                x1
+                            <div className="flex justify-between w-full ">
+                                <div className="flex flex-col">
+                                    {/* <span className="uppercase font-bold">xx99 mk ii</span> */}
+                                    <span className="uppercase font-bold text-[15px]">
+                                        {(() => {
+                                            const words = item.product.name.split(" ")
+
+                                            const prodIndex = words.findIndex(word => word.toLowerCase() === "mark")
+                                            if (prodIndex !== -1) {
+                                                return words.slice(0, prodIndex + 2).join(" ")
+                                            }
+
+                                            return words[0]
+                                        })()}
+                                    </span>
+                                    <span className="text-[15px] font-bold text-gray-500 mt-[3px]">{formatCurrency(item.product.price)}</span>
+                                </div>
+                                <div className="text-[15px] font-bold text-gray-500">
+                                    x{item.quantity}
+                                </div>
                             </div>
+
                         </div>
 
-                    </div>
+                    ))}
 
-                    <div className="flex justify-between items-center gap-4 mt-[22px]">
-                        <div className="w-[94px]  rounded-lg ">
-                            <img
-                                src="./cart/image-xx59-headphones.jpg"
-                                alt="img"
-                                className="rounded-lg"
-                            />
-                        </div>
-                        <div className="flex justify-between w-full ">
-                            <div className="flex flex-col">
-                                <span className="uppercase font-bold">xx59</span>
-                                <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 899</span>
-                            </div>
-                            <div className="text-[15px] font-bold text-gray-500">
-                                x2
-                            </div>
-                        </div>
 
-                    </div>
 
-                    <div className="flex justify-between items-center gap-4 mt-[22px]">
-                        <div className="w-[94px]  rounded-lg ">
-                            <img
-                                src="./cart/image-yx1-earphones.jpg"
-                                alt="img"
-                                className="rounded-lg"
-                            />
-                        </div>
-                        <div className="flex justify-between w-full ">
-                            <div className="flex flex-col">
-                                <span className="uppercase font-bold">yx1</span>
-                                <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 599</span>
-                            </div>
-                            <div className="text-[15px] font-bold text-gray-500">
-                                x1
-                            </div>
-                        </div>
 
-                    </div>
 
                 </div>
 
@@ -426,7 +422,7 @@ export default function Form() {
                         </div>
 
                         <div className="font-bold text-[18px]">
-                            $ 5,396
+                            {formatCurrency(totalPrice)}
                         </div>
                     </div>
 
@@ -440,7 +436,7 @@ export default function Form() {
                         </div>
                     </div>
 
-                    <div className="flex justify-between mt-[10px]">
+                    {/* <div className="flex justify-between mt-[10px]">
                         <div className="text-gray-500 font-medium">
                             vat (included)
                         </div>
@@ -448,7 +444,7 @@ export default function Form() {
                         <div className="font-bold text-[18px]">
                             $ 1,079
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="flex justify-between mt-[25px] mb-[25px]">
                         <div className="text-gray-500 font-medium">
@@ -456,7 +452,7 @@ export default function Form() {
                         </div>
 
                         <div className="font-bold text-more-ec text-[18px]">
-                            $ 5,446
+                            {formatCurrency(totalPrice + 50)}
                         </div>
                     </div>
 

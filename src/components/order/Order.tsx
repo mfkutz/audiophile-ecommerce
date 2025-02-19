@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { Button } from "../ui/button"
 import { Link } from "react-router-dom"
+import { useCartStore } from "@/store"
 
 
 type orderProps = {
@@ -25,7 +26,6 @@ export default function Order({ onClose }: orderProps) {
             document.removeEventListener("mousedown", handleClicOutside)
         }
     }, [])
-
 
 
     return (

@@ -32,7 +32,7 @@ export default function Checkout({ onClose }: checkoutProps) {
     };
 
 
-    const { cart, removeFromCart, clearCart, getTotalProducts, getTotalPrice, updateQuantity } = useCartStore()
+    const { cart, clearCart, getTotalProducts, getTotalPrice, updateQuantity } = useCartStore()
 
     const cantProd = getTotalProducts()
     const totalPrice = getTotalPrice()
@@ -43,7 +43,6 @@ export default function Checkout({ onClose }: checkoutProps) {
     // console.log("total price", totalPrice)
 
 
-    console.log(cart)
 
 
     return (

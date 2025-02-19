@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ProductData } from "@/types";
 import { formatCurrency, useGoBack } from "@/hooks/utils";
@@ -26,14 +25,11 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
         }
     }
 
-    // console.log(products)
-    // console.log(model)
-
     return (
         <>
             <div className="max-w-screen-mk mx-auto flex flex-col md:flex-row justify-between gap-5 mt-[63px] sps:mt-[120px] md:mt-[160px] relative ">
                 <div
-                    className="absolute left-0 sps:top-[-60px] top-[-50px] md:top-[-78px] text-gray-text-prod text-[15px] hover:cursor-pointer"
+                    className="absolute hover:underline hover:text-more-ec left-0 sps:top-[-60px] top-[-50px] md:top-[-78px] text-gray-text-prod text-[15px] hover:cursor-pointer"
                     onClick={goBack}
                 >
                     Go Back
@@ -82,7 +78,6 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
                                 onClick={handleAddCart}
                                 variant="default"
                             >
-                                {/* <Link to="/headphones/mark-two">add to cart</Link> */}
                                 Add to Cart
                             </Button>
                         </div>
