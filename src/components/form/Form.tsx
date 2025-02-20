@@ -14,7 +14,6 @@ export default function Form() {
 
     const [orderView, setOrderView] = useState(false)
 
-
     const initialValues: UserRegistrationForm = {
         name: '',
         email: '',
@@ -32,11 +31,33 @@ export default function Form() {
 
 
     const handleRegister = (formData) => {
-        // console.log(formData)
-        console.log("esta todo ok, envio al back", formData, cart)
+
+        const formattedCart = cart.map(item => ({
+            productId: item.product._id,
+            quantity: item.quantity
+        }))
+
+        const formattedOrder = {
+            customer: {
+                name: formData.name,
+                email: formData.email,
+                phoneNumber: formData.phoneNumber,
+                address: formData.address,
+                zipCode: formData.zipCode,
+                city: formData.city,
+                country: formData.country
+            },
+            payment: {
+                eMoneyNumber: formData.eMoneyNumber,
+                eMoneyPin: formData.eMoneyPin
+            },
+            orderItems: formattedCart
+        }
+
+        console.log("to send backend", formattedOrder)
+
         setOrderView(!orderView)
         reset()
-
     }
 
 
@@ -46,6 +67,8 @@ export default function Form() {
 
 
     const { cart, getTotalPrice } = useCartStore()
+
+    console.log('here new cart', cart)
 
     const totalPrice = getTotalPrice()
 

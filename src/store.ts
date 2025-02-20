@@ -29,7 +29,6 @@ export const useCartStore = create<CartState>()(
                     const existingItem = state.cart.find((item) => item.product._id === product._id);
 
                     if (existingItem) {
-                        //no more of 5 same products TO DO
 
                         return {
                             cart: state.cart.map((item) =>
@@ -40,10 +39,18 @@ export const useCartStore = create<CartState>()(
                         };
                     }
 
+                    //save minimal
+                    const minimalProduct = {
+                        _id: product._id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image
+                    }
+
+                    // console.log('',minimalProduct)
 
 
-
-                    return { cart: [...state.cart, { product, quantity }] };
+                    return { cart: [...state.cart, { product: minimalProduct, quantity }] };
                 });
             },
 
