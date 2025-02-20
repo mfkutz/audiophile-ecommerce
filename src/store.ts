@@ -25,6 +25,7 @@ export const useCartStore = create<CartState>()(
 
             // Add to cart
             addToCart: (product, quantity = 1) => {
+                //TODO message on state in this function, apears when add "minimalProduct"
                 set((state) => {
                     const existingItem = state.cart.find((item) => item.product._id === product._id);
 
@@ -47,9 +48,7 @@ export const useCartStore = create<CartState>()(
                         image: product.image
                     }
 
-                    // console.log('',minimalProduct)
-
-
+                    // console.log('',minimalProduct) 
                     return { cart: [...state.cart, { product: minimalProduct, quantity }] };
                 });
             },

@@ -68,7 +68,7 @@ export default function Form() {
 
     const { cart, getTotalPrice } = useCartStore()
 
-    console.log('here new cart', cart)
+    // console.log('here new cart', cart)
 
     const totalPrice = getTotalPrice()
 
@@ -339,6 +339,7 @@ export default function Form() {
                                     id="eMoneyNumber"
                                     type="text"
                                     placeholder="238521993"
+                                    maxLength={10}
                                     className="px-6 py-[17px] font-semibold text-[14px] border-gray-300 border rounded-lg mt-[6px] w-[309px]"
                                     {...register("eMoneyNumber", {
                                         required: "e-Money Number is required",
@@ -346,6 +347,14 @@ export default function Form() {
                                             value: /^\d+$/,
                                             message: "only numbers",
                                         },
+                                        minLength: {
+                                            value: 5,
+                                            message: "Must be at least 5 digits"
+                                        },
+                                        maxLength: {
+                                            value: 10,
+                                            message: "Must be max 10 digits"
+                                        }
                                     })}
                                 />
                             </div>
