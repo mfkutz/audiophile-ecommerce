@@ -1,5 +1,5 @@
 
-import { UserRegistrationForm } from "@/types"
+import { OrderType, UserRegistrationForm } from "@/types"
 import { useForm } from "react-hook-form"
 import ErrorMessage from "../errorMessage/ErrorMessage"
 import { useState } from "react"
@@ -7,12 +7,14 @@ import { Button } from "../ui/button"
 import Order from "../order/Order"
 import { useCartStore } from "@/store"
 import { formatCurrency, useGoBack } from "@/hooks/utils"
+import { useMutation } from "@tanstack/react-query"
+import { createOrder } from "@/api/CreateOrder"
 
 export default function Form() {
 
     const [selectedMethod, setSelectedMethod] = useState("eMoney")
-
     const [orderView, setOrderView] = useState(false)
+    const [orderId, setOrderId] = useState("")
 
     const initialValues: UserRegistrationForm = {
         name: '',
@@ -26,16 +28,33 @@ export default function Form() {
         eMoneyPin: ''
     }
 
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<UserRegistrationForm>({ defaultValues: initialValues })
 
-    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm<UserRegistrationForm>({ defaultValues: initialValues })
+    const { mutate } = useMutation({
 
+        mutationFn: createOrder,
+        onError: (error) => {
+            console.log(error.message)
+        },
+        onSuccess: (data) => {
+            //TO DO after getById endpoint in backend, fetch and print in screen the info (in Order component)
+            setOrderId(data.order._id)
+            reset()
+            setOrderView(!orderView)
+        }
+    })
 
-    const handleRegister = (formData) => {
+    const handleRegister = (formData: OrderType["customer"] & OrderType["payment"]) => {
+
+        const SHIPPING_COST = 50
 
         const formattedCart = cart.map(item => ({
             productId: item.product._id,
+            name: item.product.name,
+            unitPrice: item.product.price,
+            imageUrl: item.product.image.mobile,
             quantity: item.quantity
-        }))
+        })) as OrderType["orderItems"]
 
         const formattedOrder = {
             customer: {
@@ -51,13 +70,12 @@ export default function Form() {
                 eMoneyNumber: formData.eMoneyNumber,
                 eMoneyPin: formData.eMoneyPin
             },
-            orderItems: formattedCart
+            orderItems: formattedCart,
+            totalAmount: totalPrice + SHIPPING_COST,
         }
 
-        console.log("to send backend", formattedOrder)
-
-        setOrderView(!orderView)
-        reset()
+        // console.log("to send backend", formattedOrder)
+        mutate(formattedOrder)
     }
 
 
@@ -65,16 +83,13 @@ export default function Form() {
         setSelectedMethod(method)
     }
 
-
     const { cart, getTotalPrice } = useCartStore()
 
-    // console.log('here new cart', cart)
+    console.log('obtain data from here!!', cart)
 
     const totalPrice = getTotalPrice()
 
     const goBack = useGoBack()
-
-
 
     return (
 
@@ -347,10 +362,6 @@ export default function Form() {
                                             value: /^\d+$/,
                                             message: "only numbers",
                                         },
-                                        minLength: {
-                                            value: 5,
-                                            message: "Must be at least 5 digits"
-                                        },
                                         maxLength: {
                                             value: 10,
                                             message: "Must be max 10 digits"
@@ -510,7 +521,7 @@ export default function Form() {
 
             {orderView && (
                 <div className="fixed inset-0 flex items-center justify-center z-50">
-                    <Order onClose={() => setOrderView(false)} />
+                    <Order orderId={orderId} onClose={() => setOrderView(false)} />
                 </div>
             )}
 

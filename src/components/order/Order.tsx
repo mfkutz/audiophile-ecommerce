@@ -1,15 +1,21 @@
 import { useEffect, useRef } from "react"
 import { Button } from "../ui/button"
 import { Link } from "react-router-dom"
-import { useCartStore } from "@/store"
+import { useQuery } from "@tanstack/react-query"
+import { getOrderById } from "@/api/CreateOrder"
+import { formatCurrency } from "@/hooks/utils"
+import { SpinnerDotted } from "spinners-react"
 
 
 type orderProps = {
     onClose: () => void
+    orderId: string
 }
 
 
-export default function Order({ onClose }: orderProps) {
+export default function Order({ onClose, orderId }: orderProps) {
+
+    console.log('we have the id? ', orderId)
 
     const modalRef = useRef<HTMLDivElement | null>(null)
 
@@ -26,6 +32,28 @@ export default function Order({ onClose }: orderProps) {
             document.removeEventListener("mousedown", handleClicOutside)
         }
     }, [])
+
+
+
+
+    const { data: product, isLoading, error } = useQuery({
+        queryKey: ["order", orderId],
+        queryFn: () => getOrderById({ orderId })
+    })
+
+
+
+    if (isLoading) return <div className="flex w-full h-screen justify-center items-center">
+        <SpinnerDotted color="#D87D4A" />
+    </div>
+
+    if (error) return <div className="flex bg-black-ec text-white h-screen justify-center items-center">
+        <div>
+            Ups...something it's wrong
+        </div>
+    </div>
+
+    console.log('what are here??? from Order.tsx', product)
 
 
     return (
@@ -69,7 +97,7 @@ export default function Order({ onClose }: orderProps) {
                                     <div className="flex justify-between w-full ">
                                         <div className="flex flex-col">
                                             <span className="uppercase font-bold">xx99 mk ii</span>
-                                            <span className="text-[15px] font-bold text-gray-500 mt-[3px]">$ 2,999</span>
+                                            <span className="text-[15px] font-bold text-gray-500 mt-[3px]">222</span>
                                         </div>
                                         <div className="text-[15px] font-bold text-gray-500">
                                             x1
@@ -114,6 +142,8 @@ export default function Order({ onClose }: orderProps) {
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
 
@@ -131,7 +161,7 @@ export default function Order({ onClose }: orderProps) {
 
                         <div className="flex flex-col gap-2">
                             <div className="text-gray-600 uppercase">grand total</div>
-                            <div className="text-white-ec font-bold text-[18px]">$ 5,446</div>
+                            <div className="text-white-ec font-bold text-[18px]">{formatCurrency(product.totalAmount)}</div>
                         </div>
 
                     </div>
