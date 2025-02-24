@@ -97,7 +97,8 @@ const paymentSchema = z.object({
 export const orderSchema = z.object({
     customer: customerSchema,
     payment: paymentSchema,
-    orderItems: z.array(orderItemSchema).nonempty("")
+    orderItems: z.array(orderItemSchema).nonempty(""),
+    totalAmount: z.number()
 })
 
 export type OrderType = z.infer<typeof orderSchema>

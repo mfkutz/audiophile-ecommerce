@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AppLayout from "./layouts/AppLayout"
 import Home from "./pages/Home"
-import Buttons from "./pages/Buttons"
 import Headphones from "./pages/Headphones"
 import Speakers from "./pages/Speakers"
 import Earphones from "./pages/Earphones"
@@ -17,7 +16,6 @@ export default function Router() {
                     <Route path="/headphones" element={<Headphones />} />
                     <Route path="/speakers" element={<Speakers />} />
                     <Route path="/earphones" element={<Earphones />} />
-                    <Route path="/buttons" element={<Buttons />} />
 
                     <Route path="/:id" element={<ProductDescription />} />
                     <Route path="/checkout" element={<Checkout />} />

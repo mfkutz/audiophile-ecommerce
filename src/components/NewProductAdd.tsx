@@ -13,7 +13,7 @@ export default function NewProductAdd({ products, model }: NewProductAddProps) {
 
     const prod = products.find(findId => findId._id === model)
 
-    console.log('que es esto?', prod)
+    // console.log('que es esto?', prod)
 
     const goBack = useGoBack()
 

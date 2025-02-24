@@ -9,6 +9,7 @@ import { useCartStore } from "@/store"
 import { formatCurrency, useGoBack } from "@/hooks/utils"
 import { useMutation } from "@tanstack/react-query"
 import { createOrder } from "@/api/CreateOrder"
+import CartEmpty from "../cartEmpty/CartEmpty"
 
 export default function Form() {
 
@@ -37,10 +38,10 @@ export default function Form() {
             console.log(error.message)
         },
         onSuccess: (data) => {
-            //TO DO after getById endpoint in backend, fetch and print in screen the info (in Order component)
             setOrderId(data.order._id)
             reset()
             setOrderView(!orderView)
+            clearCart()
         }
     })
 
@@ -73,22 +74,15 @@ export default function Form() {
             orderItems: formattedCart,
             totalAmount: totalPrice + SHIPPING_COST,
         }
-
-        // console.log("to send backend", formattedOrder)
         mutate(formattedOrder)
     }
-
 
     const handleMethod = (method: string) => {
         setSelectedMethod(method)
     }
 
-    const { cart, getTotalPrice } = useCartStore()
-
-    console.log('obtain data from here!!', cart)
-
+    const { cart, getTotalPrice, clearCart } = useCartStore()
     const totalPrice = getTotalPrice()
-
     const goBack = useGoBack()
 
     return (
@@ -160,7 +154,6 @@ export default function Form() {
 
                     </div>
 
-
                     <div className="flex gap-4">
                         <div className="w-full">
                             <div className="flex justify-between mt-8 items-center w-[309px]">
@@ -190,10 +183,6 @@ export default function Form() {
 
                     </div>
 
-
-
-
-
                     <div className="subtitle mt-[41px] mb-3">shipping info</div>
 
                     <div className="flex gap-4">
@@ -218,8 +207,6 @@ export default function Form() {
                             />
                         </div>
                     </div>
-
-
 
                     <div className="flex gap-4">
                         <div className="w-full">
@@ -295,9 +282,7 @@ export default function Form() {
                             />
                         </div>
 
-
                     </div>
-
 
                     <div className="subtitle mt-[41px] mb-3">payments details</div>
 
@@ -327,14 +312,9 @@ export default function Form() {
                             </button>
                         </div>
 
-
                     </div>
 
-
-
-
                     {/* /////////////////// */}
-
 
                     {selectedMethod === "eMoney" &&
 
@@ -399,129 +379,106 @@ export default function Form() {
 
                         </div>
                     }
-
                     {/* //////////////////////// */}
                 </form>
-
             </div>
-
 
             {/* SUMARY VIEW ***************************** */}
             <div className="bg-white w-full h-fit rounded-lg py-[60px] px-[30px] ">
 
-                <h5 className="font-bold text-[18px] uppercase">
-                    Sumary
-                </h5>
+                {cart.length > 0 ? <div>
+                    <>
+                        <div>
+                            <h5 className="font-bold text-[18px] uppercase">
+                                Sumary
 
-                <div className="mt-[20px]">
+                            </h5>
+                            <div className="mt-[20px]">
+                                {cart.map((item) => (
+                                    <div className="flex justify-between items-center gap-4 mt-6" key={item.product._id}>
+                                        <div className="w-[94px]  rounded-lg ">
+                                            <img
+                                                src={item.product.image.mobile}
+                                                alt={item.product.name}
+                                                className="rounded-lg"
+                                            />
+                                        </div>
+                                        <div className="flex justify-between w-full ">
+                                            <div className="flex flex-col">
+                                                <span className="uppercase font-bold text-[15px]">
+                                                    {(() => {
+                                                        const words = item.product.name.split(" ")
 
+                                                        const prodIndex = words.findIndex(word => word.toLowerCase() === "mark")
+                                                        if (prodIndex !== -1) {
+                                                            return words.slice(0, prodIndex + 2).join(" ")
+                                                        }
+                                                        return words[0]
+                                                    })()}
+                                                </span>
+                                                <span className="text-[15px] font-bold text-gray-500 mt-[3px]">{formatCurrency(item.product.price)}</span>
+                                            </div>
+                                            <div className="text-[15px] font-bold text-gray-500">
+                                                x{item.quantity}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
 
-                    {cart.map((item) => (
-
-                        <div className="flex justify-between items-center gap-4 mt-6" key={item.product._id}>
-                            <div className="w-[94px]  rounded-lg ">
-                                <img
-                                    src={item.product.image.mobile}
-                                    alt={item.product.name}
-                                    className="rounded-lg"
-                                />
                             </div>
-                            <div className="flex justify-between w-full ">
-                                <div className="flex flex-col">
-                                    {/* <span className="uppercase font-bold">xx99 mk ii</span> */}
-                                    <span className="uppercase font-bold text-[15px]">
-                                        {(() => {
-                                            const words = item.product.name.split(" ")
 
-                                            const prodIndex = words.findIndex(word => word.toLowerCase() === "mark")
-                                            if (prodIndex !== -1) {
-                                                return words.slice(0, prodIndex + 2).join(" ")
-                                            }
+                            <div className="uppercase mt-[40px]">
+                                <div className="flex justify-between">
+                                    <div className="text-gray-500 font-medium">
+                                        total
+                                    </div>
 
-                                            return words[0]
-                                        })()}
-                                    </span>
-                                    <span className="text-[15px] font-bold text-gray-500 mt-[3px]">{formatCurrency(item.product.price)}</span>
+                                    <div className="font-bold text-[18px]">
+                                        {formatCurrency(totalPrice)}
+                                    </div>
                                 </div>
-                                <div className="text-[15px] font-bold text-gray-500">
-                                    x{item.quantity}
+
+                                <div className="flex justify-between mt-[10px]">
+                                    <div className="text-gray-500 font-medium">
+                                        shipping
+                                    </div>
+
+                                    <div className="font-bold text-[18px]">
+                                        $ 50
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-between mt-[25px] mb-[25px]">
+                                    <div className="text-gray-500 font-medium">
+                                        grand total
+                                    </div>
+
+                                    <div className="font-bold text-more-ec text-[18px]">
+                                        {formatCurrency(totalPrice + 50)}
+                                    </div>
                                 </div>
                             </div>
+                            <Button
+                                asChild
+                                variant="pay"
+                            >
+                                <button
+                                    type="submit"
+                                    form="mainForm"
+                                >continue & pay</button>
+                            </Button>
 
                         </div>
-
-                    ))}
-
-
-
-
-
-                </div>
-
-                <div className="uppercase mt-[40px]">
-                    <div className="flex justify-between">
-                        <div className="text-gray-500 font-medium">
-                            total
-                        </div>
-
-                        <div className="font-bold text-[18px]">
-                            {formatCurrency(totalPrice)}
-                        </div>
-                    </div>
-
-                    <div className="flex justify-between mt-[10px]">
-                        <div className="text-gray-500 font-medium">
-                            shipping
-                        </div>
-
-                        <div className="font-bold text-[18px]">
-                            $ 50
-                        </div>
-                    </div>
-
-                    {/* <div className="flex justify-between mt-[10px]">
-                        <div className="text-gray-500 font-medium">
-                            vat (included)
-                        </div>
-
-                        <div className="font-bold text-[18px]">
-                            $ 1,079
-                        </div>
-                    </div> */}
-
-                    <div className="flex justify-between mt-[25px] mb-[25px]">
-                        <div className="text-gray-500 font-medium">
-                            grand total
-                        </div>
-
-                        <div className="font-bold text-more-ec text-[18px]">
-                            {formatCurrency(totalPrice + 50)}
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <Button
-
-                    asChild
-                    variant="pay"
-                >
-                    {/* <Link to="/mark-two">continue & pay</Link> */}
-                    <button
-                        type="submit"
-                        form="mainForm"
-                    >continue & pay</button>
-                </Button>
-
+                    </>
+                </div> : <CartEmpty />
+                }
             </div>
 
             {/* //////// MODAL ////// */}
 
             {orderView && (
                 <div className="fixed inset-0 flex items-center justify-center z-50">
-                    <Order orderId={orderId} onClose={() => setOrderView(false)} />
+                    <Order orderId={orderId} />
                 </div>
             )}
 

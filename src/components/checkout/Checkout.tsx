@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { useEffect, useRef } from "react";
 import { useCartStore } from "@/store";
 import { formatCurrency } from "@/hooks/utils";
+import CartEmpty from "../cartEmpty/CartEmpty";
 
 type checkoutProps = {
     onClose: () => void
@@ -71,15 +72,7 @@ export default function Checkout({ onClose }: checkoutProps) {
                 <div className="mt-[20px]">
 
                     {cart.length === 0 ?
-
-                        <div className="flex flex-col justify-center items-center">
-                            <p className="pt-4">Your cart is empty</p>
-                            <img
-                                src={"./assets/shopping-bag.png"}
-                                alt="cart"
-                                className="w-[40px] mt-2"
-                            />
-                        </div>
+                        <CartEmpty />
                         : null}
 
                     {cart.map((item => (
